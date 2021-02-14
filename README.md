@@ -12,3 +12,5 @@ Superscript report Run
 Visually alert user something is wrong
 
 Written in 100% C#
+
+MIT Licence
