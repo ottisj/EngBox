@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EngBox", "EngBox\EngBox.csproj", "{14428751-BB6B-4626-8CEC-E330D3118EF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Styles", "Styles", "{32C22FAF-7EB6-4DB1-825E-2C35042657C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deploy", "Deploy\Deploy.csproj", "{58E94159-EA71-49DD-9B96-02D3AC318A60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14428751-BB6B-4626-8CEC-E330D3118EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14428751-BB6B-4626-8CEC-E330D3118EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14428751-BB6B-4626-8CEC-E330D3118EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14428751-BB6B-4626-8CEC-E330D3118EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E94159-EA71-49DD-9B96-02D3AC318A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E94159-EA71-49DD-9B96-02D3AC318A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E94159-EA71-49DD-9B96-02D3AC318A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E94159-EA71-49DD-9B96-02D3AC318A60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC743CD4-4307-4A9F-90A6-85BD67F0D6A7}
+	EndGlobalSection
+EndGlobal

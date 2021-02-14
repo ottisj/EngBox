@@ -1,0 +1,83 @@
+﻿<Window x:Class="Deploy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Deploy"
+        xmlns:eng="clr-namespace:EngBox;assembly=EngBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="engInputStyle" TargetType="eng:EngBoxControl">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="2,2,5,2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MinWidth" Value="150"/>
+           
+        </Style>
+        <Style x:Key="engOutputStyle" TargetType="eng:EngBoxControl" BasedOn="{StaticResource engInputStyle}">
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+        <Style x:Key="engLabelStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="2,2,5,2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="MinWidth" Value="200"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            
+        </Style>
+        <Style x:Key="GroupBoxStyle" TargetType="GroupBox">
+            <Setter Property="Margin" Value="5,5,5,0"/>
+        </Style>
+        <Style x:Key="ButtonProtocol" TargetType="Button">
+            <Setter Property="MinWidth" Value="60"/>
+            <Setter Property="MinHeight" Value="25"/>
+            <Setter Property="Margin" Value="5,5,0,5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="Input values" Style="{StaticResource GroupBoxStyle}">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Diameter" Style="{StaticResource engLabelStyle}"/>
+                        <eng:EngBoxControl x:Name="engDiameter" Style="{StaticResource engInputStyle}" UnitType="Length" IsZeroAllowed="True" CurrentValue="1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Height" Style="{StaticResource engLabelStyle}"/>
+                        <eng:EngBoxControl x:Name="engHeight" Style="{StaticResource engInputStyle}" UnitType="Length" IsZeroAllowed="True" SIValue="1" CurrentValue="1"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Output values" Style="{StaticResource GroupBoxStyle}">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Volume" Style="{StaticResource engLabelStyle}"/>
+                        <eng:EngBoxControl x:Name="engVolume" Style="{StaticResource engOutputStyle}" UnitType="Volume" IsZeroAllowed="True" IsReadOnly="True" LL_Limit="1E-05" UseLL="False" HH_Limit="10"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnProtocol" Content="Protocol" Style="{StaticResource ButtonProtocol}" Click="btnProtocol_Click"/>
+             <Button x:Name="btnClearProtocol" Content="Clear" Style="{StaticResource ButtonProtocol}" Click="btnClearProtocol_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,0,0,0"  Grid.Column="1">
+        <StackPanel x:Name ="stckProtocolTitle" Orientation="Vertical">
+            
+            <TextBlock Text="Protocol" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <StackPanel x:Name="stckProtocols" Orientation="Vertical">
+                </StackPanel>
+            </StackPanel>        
+            
+        </ScrollViewer>
+    </Grid>
+</Window>

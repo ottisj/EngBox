@@ -1,0 +1,49 @@
+<UserControl x:Class="EngBox.EngBoxControl"
+             x:Name="ucEngBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EngBox"
+             mc:Ignorable="d" 
+             d:DesignHeight="25" d:DesignWidth="150">
+    <UserControl.Resources>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="MinWidth" Value="60"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding  Path=IsValueValid, ElementName=ucEngBox}" Value="False">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+               <!-- <DataTrigger Binding="{Binding  Path=IsValueValid, ElementName=ucEngBox}" Value="True">
+                    <Setter Property="Background" Value="{x:Static SystemColors.WindowBrush}"/>
+                </DataTrigger>-->
+
+                <DataTrigger Binding="{Binding  Path=IsLLExceeded, ElementName=ucEngBox}" Value="True">
+                    <Setter Property="Background" Value="#FFF7F3C7"/>
+                   
+                </DataTrigger>
+                <!--<DataTrigger Binding="{Binding  Path=IsLLExceeded, ElementName=ucEngBox}" Value="False">
+                    <Setter Property="Background" Value="{x:Static SystemColors.WindowBrush}"/>
+
+                </DataTrigger>-->
+                <DataTrigger Binding="{Binding  Path=IsHHExceeded, ElementName=ucEngBox}" Value="True">
+                    <Setter Property="Background" Value="#FFF7F3C7"/>
+                </DataTrigger>
+                <!--<DataTrigger Binding="{Binding  Path=IsHHExceeded, ElementName=ucEngBox}" Value="False">
+                    <Setter Property="Background" Value="{x:Static SystemColors.WindowBrush}"/>
+                </DataTrigger>-->
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ComboStyle" TargetType="ComboBox">
+            <Setter Property="MinWidth" Value="90"/>
+        </Style>
+        <local:NumericValueConverter x:Key="NumericValueConverter"/>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <TextBox x:Name="txtValue" Text="{Binding Path=CurrentValue, ElementName=ucEngBox, 
+            Converter={StaticResource NumericValueConverter}, ConverterParameter=x:Static EngBox._oldValue}"
+                 Style="{StaticResource TextBoxStyle}" TextChanged="txtValue_TextChanged" GotFocus="txtValue_GotFocus"
+                 MouseWheel="txtValue_MouseWheel" PreviewLostKeyboardFocus="txtValue_PreviewLostKeyboardFocus" />
+        <ComboBox x:Name="cmbUnit" SelectedIndex="{Binding Path=UnitIndex, ElementName=ucEngBox}" Style="{StaticResource ComboStyle}" SelectionChanged="cmbUnit_SelectionChanged" ItemsSource="{Binding Units}"/>
+    </StackPanel>
+</UserControl>
